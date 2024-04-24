@@ -34,7 +34,7 @@ func AddTodo(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
 	response := ApiResponse{"200", TodoList}
-	services.ResponseWithJson(w, http.StatusOK, response) //回傳
+	services.ResponseWithJson(w, http.StatusOK, response) //回
 }
 
 func GetTodoById(w http.ResponseWriter, r *http.Request) {

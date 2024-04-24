@@ -21,6 +21,7 @@ func init() {
 	register("POST", "/api/todo", controller.AddTodo, nil)
 	register("GET", "/api/todo/{id}", controller.GetTodoById, nil)
 	register("GET", "/hello", controller.Test, nil)
+	register("POST", "/member/createMember", controller.CreateMember, nil)
 }
 
 func NewRouter() *mux.Router {

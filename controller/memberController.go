@@ -2,6 +2,7 @@ package controller
 
 import (
 	"encoding/json"
+	"gotest/services"
 	"io"
 	"net/http"
 )
@@ -29,5 +30,14 @@ func CreateMember(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	dbService.open()
+	sql := "INSERT INTO member (name,birth) VALUES ('deng','1990-01-01')"
+	row, err := services.Create(sql, member)
+
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+
+	response := ApiResponse{"200", row}
+	services.ResponseWithJson(w, http.StatusOK, response) //回
 }
